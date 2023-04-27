@@ -1,0 +1,73 @@
+.home {
+    .container {
+        height: 100vh;
+        padding: 5rem;
+        box-sizing: border-box;
+
+        .button {
+            background-color: rgb(225, 91, 68);
+            color: white;
+        }
+
+        .vector_img {
+            filter: drop-shadow(0.20px 10px rgba(219, 218, 218, 0.96));
+            animation: vectorAnimation 500ms infinite ease-in-out alternate;
+        }
+
+        @keyframes vectorAnimation {
+            to {
+                transform: translateY(-10px);
+            }
+        }
+
+    }
+
+    .brand_box {
+        padding: 8px;
+        background-color: rgb(35, 33, 33);
+
+        .brand_heading {
+            color: rgb(230, 241, 230);
+
+        }
+
+        .brands_icons {
+            justify-content: space-evenly;
+
+            svg {
+                color: white;
+                font-size: 2rem;
+                transition: color 0.5s;
+                margin-top: 4px;
+
+                &:hover {
+                    color: yellow;
+                }
+            }
+        }
+
+    }
+
+    .container2 {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        video {
+            border: 1px solid rgba(172, 165, 165, 0.18);
+            width: 60%;
+            border-radius: 5px;
+            outline: none;
+
+            @media screen and (max-width:600px) {
+                width: 100%;
+
+
+            }
+        }
+
+    }
+
+}
