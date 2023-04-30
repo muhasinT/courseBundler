@@ -2,18 +2,21 @@ import express from "express";
 import { config } from "dotenv";
 import ErrorMiddleware from "./middlewares/Error.js"
 import cookieParser from "cookie-parser";
-import cors from "cors";
+// import cors from "cors";
 import path from 'path';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 config({
     path: "./config/config.env",
 });
 
-const _dirname = path.dirname("");
-const buildPath = path.join(_dirname, "../coursebundler/build")
+const buildPath = path.join(__dirname, "../coursebundler/build")
 
-console.log(buildPath, "kkkdfkkk");
+console.log(buildPath);
 
 
 const app = express();
@@ -31,16 +34,16 @@ app.use(express.urlencoded(
 
 app.use(cookieParser());
 
-app.use(
-    cors({
-        origin: process.env.FRONTEND_URL,
-        credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE"],
-    })
-);
+// app.use(
+//     cors({
+//         origin: process.env.FRONTEND_URL,
+//         credentials: true,
+//         methods: ["GET", "POST", "PUT", "DELETE"],
+//     })
+// );
 
 app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../coursebundler/build/index.html"),
+    res.sendFile(path.join(buildPath, "/index.html"),
         function (err) {
             if (err) {
                 res.status(500).send(err)
