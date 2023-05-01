@@ -163,11 +163,14 @@ export const subscriptionReducer = createReducer(
     buySubscriptionSuccess: (state, action) => {
       state.loading = false;
       state.subscriptionId = action.payload;
+
+      // console.log(action.payload,"safsd");
     },
     buySubscriptionFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
+
 
 
     cancelSubscriptionRequest: state => {

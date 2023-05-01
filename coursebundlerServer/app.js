@@ -16,7 +16,6 @@ config({
 
 const buildPath = path.join(__dirname, "../coursebundler/build")
 
-console.log(buildPath);
 
 
 const app = express();
@@ -42,7 +41,7 @@ app.use(cookieParser());
 //     })
 // );
 
-app.get("/*", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(buildPath, "/index.html"),
         function (err) {
             if (err) {

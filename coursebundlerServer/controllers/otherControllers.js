@@ -114,3 +114,4 @@ export const getDashboardStats = catchAsyncError(async (req, res, next) => {
         usersProfit
     });
 });
+

@@ -35,9 +35,12 @@ export const paymentVerification = catchAsyncError(async (req, res, next) => {
 
     const { razorpay_signature, razorpay_payment_id, razorpay_subscription_id } = req.body;
 
+
     const user = await User.findById(req.user._id);
 
+
     const subscription_id = user.subscription.id;
+
 
     const generated_signature = crypto
         .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
@@ -79,7 +82,6 @@ export const cancelSubscription = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user._id);
     const subscriptionId = user.subscription.id;
     let refund = false;
-
 
     await instance.subscriptions.cancel(subscriptionId);
 

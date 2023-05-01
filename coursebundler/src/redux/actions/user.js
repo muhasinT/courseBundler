@@ -76,8 +76,11 @@ export const buySubscription = () => async dispatch => {
     dispatch({ type: 'buySubscriptionRequest' });
 
     const { data } = await axios.get(`${server}/subscribe`, {
+
       withCredentials: true,
     });
+    console.log(data,"dsfnj")
+
 
     dispatch({ type: 'buySubscriptionSuccess', payload: data.subscriptionId });
   } catch (error) {
