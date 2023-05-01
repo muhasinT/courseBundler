@@ -58,7 +58,6 @@ const Header = ({ isAuthenticated = false, user }) => {
                             <LinkButton onClose={onClose} url="/request" title="Request a Course" />
                             <LinkButton onClose={onClose} url="/contact" title="Contact Us" />
                             <LinkButton onClose={onClose} url="/about" title="About" />
-
                             <HStack
                                 justifyContent={'space-evenly'}
                                 position="absolute"

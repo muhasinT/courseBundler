@@ -41,15 +41,7 @@ app.use(cookieParser());
 //     })
 // );
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(buildPath, "/index.html"),
-        function (err) {
-            if (err) {
-                res.status(500).send(err)
-            }
-        }
-    )
-});
+
 
 import course from "./routes/courseRoutes.js";
 import user from "./routes/userRoutes.js";
@@ -62,6 +54,24 @@ app.use("/api/v1", user);
 app.use("/api/v1", payment);
 app.use("/api/v1/", other)
 
+// app.get("/*", (req, res) => {
+//     res.sendFile(path.join(`${buildPath}/index.html`),
+//         function (err) {
+//             if (err) {
+//                 res.status(500).send(err)
+//             }
+//         }
+//     )
+// });
+
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../coursebundler/build/index.html'), 
+    function(err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    })
+  });
 
 export default app;
 

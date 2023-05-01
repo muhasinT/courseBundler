@@ -49,7 +49,9 @@ export const paymentVerification = catchAsyncError(async (req, res, next) => {
 
     const isAuthentic = generated_signature === razorpay_signature;
 
+   
     if (!isAuthentic)
+    
         return res.redirect(`${process.env.FRONTEND_URL}/paymentfailed`);
 
     //database comes here
@@ -63,7 +65,6 @@ export const paymentVerification = catchAsyncError(async (req, res, next) => {
     user.subscription.status = "active";
 
     await user.save();
-
 
     res.redirect(
         `${process.env.FRONTEND_URL}/paymentsuccess?reference=${razorpay_payment_id}`
