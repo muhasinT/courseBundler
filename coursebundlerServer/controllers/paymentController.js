@@ -7,9 +7,9 @@ import { Payment } from "../models/Payment.js";
 
 export const buySubscription = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user._id);
- 
+
     if (user.role === "admin")
-    return next(new ErrorHandler("Admin can't buy subscription", 400));
+        return next(new ErrorHandler("Admin can't buy subscription", 400));
 
     const plan_id = process.env.PLAN_ID || "plan_LiKomkKXhWgrqg";
 
@@ -17,18 +17,18 @@ export const buySubscription = catchAsyncError(async (req, res, next) => {
         plan_id,
         customer_notify: 1,
         total_count: 12,
-      });
+    });
 
     user.subscription.id = subscription.id;
 
     user.subscription.status = subscription.status;
-  
+
     await user.save();
 
     res.status(201).json({
         success: true,
         subscriptionId: subscription.id,
-      });
+    });
 });
 
 export const paymentVerification = catchAsyncError(async (req, res, next) => {
@@ -49,9 +49,9 @@ export const paymentVerification = catchAsyncError(async (req, res, next) => {
 
     const isAuthentic = generated_signature === razorpay_signature;
 
-   
+
     if (!isAuthentic)
-    
+
         return res.redirect(`${process.env.FRONTEND_URL}/paymentfailed`);
 
     //database comes here
@@ -90,7 +90,7 @@ export const cancelSubscription = catchAsyncError(async (req, res, next) => {
         razorpay_subscription_id: subscriptionId,
     });
 
- 
+
     const gap = Date.now() - payment.createdAt;
 
     const refundTime = process.env.REFUND_DAYS * 24 * 60 * 60 * 1000;

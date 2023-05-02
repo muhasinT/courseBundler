@@ -57,7 +57,6 @@ function App() {
     dispatch(loadUser());
   }, [dispatch])
 
-
   return (
     <Router>
       {
@@ -67,7 +66,7 @@ function App() {
             <>
               <Header isAuthenticated={isAuthenticated} user={user} />
               <Routes>
-                <Route path="/" element={<Home />} />  
+                <Route path="/" element={<Home />} />
                 <Route path="/courses" element={<Courses />} />
                 <Route path="/course/:id" element={
                   <ProtectedRoute isAuthenticated={isAuthenticated}>
@@ -210,6 +209,6 @@ function App() {
       }
     </Router>
   );
-}
+};
 
 export default App;

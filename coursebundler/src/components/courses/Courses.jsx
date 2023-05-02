@@ -165,6 +165,6 @@ const Courses = () => {
 
         </Container>
     )
-}
+};
 
 export default Courses

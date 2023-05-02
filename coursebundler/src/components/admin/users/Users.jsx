@@ -4,10 +4,13 @@ import { RiDeleteBin7Fill } from 'react-icons/ri';
 import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, updateUserRole } from '../../../redux/actions/admin';
+import { deleteUser, getAllUsers, updateUserRole } from '../../../redux/actions/admin';
+import  toast  from 'react-hot-toast';
 
 const Users = () => {
-    const {users ,loading} = useSelector(state => state.admin)
+    const {users ,loading,error,message} = useSelector(state => state.admin)
+
+    console.log(users,"users");
 
     const dispatch = useDispatch();
 
@@ -17,10 +20,19 @@ const Users = () => {
     const deleteButtonHandler = (userId) =>{
         dispatch(deleteUser(userId));
     };
-
     useEffect(() => {
-
-    }, [dispatch])
+        if (error) {
+          toast.error(error);
+          dispatch({ type: 'clearError' });
+        }
+    
+        if (message) {
+          toast.success(message);
+          dispatch({ type: 'clearMessage' });
+        }
+    
+        dispatch(getAllUsers());
+      }, [dispatch, error, message]);
     
 
     return (

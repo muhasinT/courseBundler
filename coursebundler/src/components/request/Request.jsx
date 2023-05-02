@@ -1,17 +1,23 @@
-import { Box, Button, Container, FormLabel, Heading, Input, Textarea, VStack } from '@chakra-ui/react'
+import {
+    Box,
+    Button,
+    Container,
+    FormLabel,
+    Heading,
+    Input,
+    Textarea,
+    VStack
+} from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import { courseRequest } from '../../redux/actions/other';
 import toast from 'react-hot-toast';
-
-
 
 const Request = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [course, setCourse] = useState("");
-
     const dispatch = useDispatch();
 
     const {
@@ -20,10 +26,8 @@ const Request = () => {
         message: stateMessage,
     } = useSelector(state => state.other);
 
-
     const submitHandler = (e) => {
         e.preventDefault();
-
         dispatch(courseRequest(name, email, course));
     };
 
@@ -81,11 +85,11 @@ const Request = () => {
                             focusBorderColor="red.500"
                         />
                     </Box>
-                    <Button 
-                    isLoading={loading}
-                     my="4" 
-                     colorScheme={"red"} 
-                      type="submit">
+                    <Button
+                        isLoading={loading}
+                        my="4"
+                        colorScheme={"red"}
+                        type="submit">
                         Send Mail
                     </Button>
                     <Box my="4">
@@ -101,6 +105,6 @@ const Request = () => {
             </VStack>
         </Container>
     )
-}
+};
 
 export default Request

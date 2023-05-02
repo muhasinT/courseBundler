@@ -1,5 +1,11 @@
-import { Button, Container, Heading, Input, VStack } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import {
+    Button,
+    Container,
+    Heading,
+    Input,
+    VStack
+} from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -11,25 +17,25 @@ const ResetPassword = () => {
     const params = useParams();
     const navigate = useNavigate();
 
-    const {loading,message,error} = useSelector(state => state.profile);
+    const { loading, message, error } = useSelector(state => state.profile);
 
     const dispatch = useDispatch();
     const submitHandler = e => {
         e.preventDefault();
-        dispatch(resetPassword(params.token,password));
+        dispatch(resetPassword(params.token, password));
     };
 
     useEffect(() => {
-        if(error){
+        if (error) {
             toast.error(error);
-            dispatch({type:'clearError'});
+            dispatch({ type: 'clearError' });
         }
-        if(message){
+        if (message) {
             toast.success(message);
-            dispatch({type:'clearMessage'});
+            dispatch({ type: 'clearMessage' });
             navigate("/login");
         }
-    }, [dispatch,error,message,navigate]);
+    }, [dispatch, error, message, navigate]);
     return (
         <Container py={'16'} h={'90vh'}>
             <form onSubmit={submitHandler}>
@@ -54,6 +60,6 @@ const ResetPassword = () => {
                 </VStack>
             </form>
         </Container>)
-}
+};
 
 export default ResetPassword

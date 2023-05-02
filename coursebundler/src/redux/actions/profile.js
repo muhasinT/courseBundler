@@ -140,7 +140,7 @@ export const resetPassword = (token, password) => async dispatch => {
 
 export const addToPlaylist = (id) => async dispatch => {
   try {
-        dispatch({ type: 'addToPlaylistRequest'  });
+    dispatch({ type: 'addToPlaylistRequest' });
 
     const config = {
       headers: {
@@ -156,35 +156,35 @@ export const addToPlaylist = (id) => async dispatch => {
         },
         config
       );
-      dispatch({type:'addToPlaylistSuccess',payload:data.message});
+    dispatch({ type: 'addToPlaylistSuccess', payload: data.message });
 
   } catch (error) {
     dispatch({
-      type:'addToPlaylistFail',
-      payload:error.response.data.message,
+      type: 'addToPlaylistFail',
+      payload: error.response.data.message,
     });
   }
 };
 
-export const removeFromPlaylist = (id) => async dispatch =>{
+export const removeFromPlaylist = (id) => async dispatch => {
   try {
-      dispatch({type:'removeFromPlaylistRequest'});
+    dispatch({ type: 'removeFromPlaylistRequest' });
 
-      const config = {
-        withCredentials:true,
-      };
+    const config = {
+      withCredentials: true,
+    };
 
-      const {data} = await axios.delete(
-        `${server}/removefromplaylist?id=${id}`,
-        config,
-      );
-      
-      dispatch({type:'removeFromPlaylistSuccess',payload:data.message});
+    const { data } = await axios.delete(
+      `${server}/removefromplaylist?id=${id}`,
+      config,
+    );
+
+    dispatch({ type: 'removeFromPlaylistSuccess', payload: data.message });
 
   } catch (error) {
     dispatch({
-      type:'removeFromPlaylistFail',
-      payload:error.response.data.message,
+      type: 'removeFromPlaylistFail',
+      payload: error.response.data.message,
     });
   }
 };

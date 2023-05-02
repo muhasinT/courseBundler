@@ -1,8 +1,17 @@
-import { Avatar, Box, Button, Container, FormLabel, Heading, Input, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { register } from '../../redux/actions/user'
+import { 
+    Avatar, 
+    Box, 
+    Button, 
+    Container, 
+    FormLabel, 
+    Heading, 
+    Input, 
+    VStack 
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { register } from '../../redux/actions/user';
 
 export const fileUploadCss =
 {
@@ -15,11 +24,9 @@ export const fileUploadCss =
     backgroundColor: "white"
 }
 
-
 const fileUploadStyle = {
     "&::file-selector-button": fileUploadCss
 }
-
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -133,6 +140,6 @@ const Register = () => {
                 </form>
             </VStack>
         </Container>)
-}
+};
 
 export default Register

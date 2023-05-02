@@ -1,7 +1,15 @@
-import { Box, Button, Container, FormLabel, Heading, Input, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import {
+    Box,
+    Button,
+    Container,
+    FormLabel,
+    Heading,
+    Input,
+    VStack
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { login } from '../../redux/actions/user';
 
 
@@ -11,16 +19,16 @@ const Login = () => {
 
     const dispatch = useDispatch()
 
-const submitHandler  = (e) => {
-    e.preventDefault();
-    dispatch(login(email,password));
-};  
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(login(email, password));
+    };
 
     return (
         <Container h={'95vh'}>
             <VStack h={'full'} justifyContent="center" spacing={'16'}>
                 <Heading children={'Welcome to CourseBundler'} />
-               
+
                 <form onSubmit={submitHandler} style={{ width: '100%' }}>
                     <Box my={'4'}>
                         <FormLabel htmlFor="email" children="Email Address" />
@@ -34,7 +42,7 @@ const submitHandler  = (e) => {
                             focusBorderColor="red.500"
                         />
                     </Box>
-                    
+
                     <Box my={'4'}>
                         <FormLabel htmlFor="password" children="password" />
                         <Input
@@ -56,12 +64,12 @@ const submitHandler  = (e) => {
                         </Link>
                     </Box>
                     <Button my="4" colorScheme={"red"} type="submit">
-                    Login
+                        Login
                     </Button>
 
                     <Box my="4">
                         New USer?{' '}
-                        <Link to ="/register">
+                        <Link to="/register">
                             <Button colorScheme={'red'} variant="link">
                                 Sign Up
                             </Button>{" "}
@@ -72,7 +80,7 @@ const submitHandler  = (e) => {
             </VStack>
         </Container>
     )
-}
+};
 
 export default Login
 

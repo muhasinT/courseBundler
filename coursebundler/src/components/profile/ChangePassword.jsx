@@ -1,5 +1,5 @@
-import { Button, Container, Heading, Input, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { Button, Container, Heading, Input, VStack } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changePassword } from '../../redux/actions/profile';
 import { useEffect } from 'react';
@@ -17,7 +17,6 @@ const ChangePassword = () => {
 
     const {loading,message,error} = useSelector(state => state.profile);
 
-
     useEffect(() => {
         if(error){
             toast.error(error);
@@ -29,7 +28,6 @@ const ChangePassword = () => {
         }
     }, [dispatch,error,message])
     
-
     return (
         <Container py='16' minH={'90vh'}>
             <form onSubmit={submitHandler}>
@@ -64,6 +62,6 @@ const ChangePassword = () => {
 
         </Container>
     )
-}
+};
 
 export default ChangePassword

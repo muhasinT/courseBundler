@@ -1,4 +1,20 @@
-import { Box, Button, Grid, Heading, HStack, Image, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
+import {
+    Box,
+    Button,
+    Grid,
+    Heading,
+    HStack,
+    Image,
+    Table,
+    TableCaption,
+    TableContainer,
+    Tbody,
+    Td,
+    Th,
+    Thead,
+    Tr,
+    useDisclosure
+} from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react';
 import { RiDeleteBin7Fill } from 'react-icons/ri';
 import cursor from '../../../assets/images/cursor.png';
@@ -31,7 +47,6 @@ const AdminCourses = () => {
     };
 
     const deleteButtonHandler = (courseId) => {
-        console.log(courseId);
         dispatch(deleteCourse(courseId))
     };
 
@@ -67,8 +82,6 @@ const AdminCourses = () => {
 
         dispatch(getAllCourses())
     }, [dispatch, error, message])
-
-
 
     return (
         <Grid
@@ -107,9 +120,9 @@ const AdminCourses = () => {
                                     courseDetailsHandler={courseDetailsHandler}
                                     deleteButtonHandler={deleteButtonHandler}
                                     key={item._id}
-                                    item={item} 
+                                    item={item}
                                     loading={loading}
-                                    />
+                                />
                             ))}
                         </Tbody>
                     </Table>
@@ -131,8 +144,7 @@ const AdminCourses = () => {
 
         </Grid>
     )
-}
-
+};
 
 function Row({ item, courseDetailsHandler, deleteButtonHandler, loading }) {
 
@@ -172,6 +184,5 @@ function Row({ item, courseDetailsHandler, deleteButtonHandler, loading }) {
         </Tr>
     )
 };
-
 
 export default AdminCourses;

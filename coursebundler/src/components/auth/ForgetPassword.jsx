@@ -1,5 +1,11 @@
-import { Button, Container, Heading, Input, VStack } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import {
+    Button,
+    Container,
+    Heading,
+    Input,
+    VStack
+} from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgetPassword } from '../../redux/actions/profile';
 import { toast } from 'react-hot-toast';
@@ -7,7 +13,7 @@ import { toast } from 'react-hot-toast';
 const ForgetPassword = () => {
     const [email, setEmail] = useState("");
 
-    const {loading,message,error} = useSelector(state => state.profile)
+    const { loading, message, error } = useSelector(state => state.profile)
 
     const dispatch = useDispatch();
     const submitHandler = e => {
@@ -16,16 +22,16 @@ const ForgetPassword = () => {
     };
 
     useEffect(() => {
-        if(error){
+        if (error) {
             toast.error(error);
-            dispatch({type:'clearError'});
+            dispatch({ type: 'clearError' });
         }
-        if(message){
+        if (message) {
             toast.success(message);
-            dispatch({type:'clearMessage'});
+            dispatch({ type: 'clearMessage' });
         }
-    }, [dispatch,error,message]);
-    
+    }, [dispatch, error, message]);
+
 
     return (
 
@@ -39,12 +45,12 @@ const ForgetPassword = () => {
 
                 <VStack spacing={'8'}>
                     <Input
-                            required
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            placeholder="abc@gamil.com"
-                            type={"email"}
-                            focusBorderColor="red.500"
+                        required
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        placeholder="abc@gamil.com"
+                        type={"email"}
+                        focusBorderColor="red.500"
                     />
                     <Button isLoading={loading} type='submit' w={'full'} colorScheme="red">
                         Send Reset Link
@@ -53,6 +59,6 @@ const ForgetPassword = () => {
             </form>
         </Container>
     )
-}
+};
 
 export default ForgetPassword

@@ -24,7 +24,7 @@ import { Link } from 'react-router-dom';
 import { removeFromPlaylist, updateProfilePicture } from '../../redux/actions/profile';
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelSubscription, loadUser } from '../../redux/actions/user';
-import  toast  from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { fileUploadCss } from '../auth/Register';
 
 const Profile = ({ user }) => {
@@ -37,7 +37,7 @@ const Profile = ({ user }) => {
     } = useSelector(state => state.subscription);
 
     const removeFromPlaylistHandler = async id => {
-        await dispatch(removeFromPlaylist(id));  
+        await dispatch(removeFromPlaylist(id));
         dispatch(loadUser());
     };
 
@@ -113,11 +113,11 @@ const Profile = ({ user }) => {
                             <Text children="Subscription" fontWeight={'bold'} />
                             {user.subscription && user.subscription.status === "active" ? (
                                 <Button
-                                isLoading={subscriptionLoading}
-                                onClick={cancelSubscriptionHandler}
-                                color={'red.500'}
+                                    isLoading={subscriptionLoading}
+                                    onClick={cancelSubscriptionHandler}
+                                    color={'red.500'}
                                     variant="unstyled"
-                                    >
+                                >
                                     Cancel Subscription
                                 </Button>
                             ) : (
@@ -158,7 +158,7 @@ const Profile = ({ user }) => {
                                     <HStack>
                                         <Link to={`/course/${element.course}`}>
                                             <Button variant={"ghost"} colorScheme="red">
-                                              Watch Now  
+                                                Watch Now
                                             </Button>
                                         </Link>
                                         <Button
@@ -177,7 +177,7 @@ const Profile = ({ user }) => {
                 loading={loading} />
         </Container>
     )
-}
+};
 
 export default Profile
 
@@ -185,9 +185,6 @@ function ChangePhotoBox({ isOpen, onClose, changeImageSubmitHandler, loading }) 
 
     const [image, setImage] = useState("")
     const [imagePrev, setImagePrev] = useState("")
-
-
-
     const changeImage = (e) => {
         const file = e.target.files[0];
 
@@ -217,9 +214,7 @@ function ChangePhotoBox({ isOpen, onClose, changeImageSubmitHandler, loading }) 
                             <VStack spacing={'8'}>
                                 {
                                     imagePrev && <Avatar src={imagePrev} boxSize={'48'} />
-
                                 }
-
                                 <Input
                                     type={'file'}
                                     css={{ '&::file-selector-button': fileUploadCss }}
@@ -243,4 +238,4 @@ function ChangePhotoBox({ isOpen, onClose, changeImageSubmitHandler, loading }) 
             </ModalContent>
         </Modal>
     )
-}
+};

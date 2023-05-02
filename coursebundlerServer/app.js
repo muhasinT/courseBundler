@@ -3,7 +3,7 @@ import { config } from "dotenv";
 import ErrorMiddleware from "./middlewares/Error.js"
 import cookieParser from "cookie-parser";
 // import cors from "cors";
-import path from 'path';
+// import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -20,7 +20,7 @@ const buildPath = path.join(__dirname, "../coursebundler/build")
 
 const app = express();
 
-app.use(express.static(buildPath));
+// app.use(express.static(buildPath));
 
 app.use(express.static('static'));
 
@@ -77,3 +77,4 @@ export default app;
 
 
 app.use(ErrorMiddleware);
+ 

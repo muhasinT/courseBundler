@@ -79,7 +79,7 @@ export const buySubscription = () => async dispatch => {
 
       withCredentials: true,
     });
-    console.log(data,"dsfnj")
+    console.log(data, "dsfnj")
 
 
     dispatch({ type: 'buySubscriptionSuccess', payload: data.subscriptionId });

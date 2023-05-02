@@ -1,4 +1,14 @@
-import { Avatar, Box, Button, Container, Heading, HStack, Stack, Text, VStack } from '@chakra-ui/react'
+import {
+    Avatar,
+    Box,
+    Button,
+    Container,
+    Heading,
+    HStack,
+    Stack,
+    Text,
+    VStack
+} from '@chakra-ui/react'
 import React from 'react'
 import { RiSecurePaymentFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
@@ -13,7 +23,7 @@ const Founder = () => (
             <Text children='Co-Founder' opacity={0.7} />
         </VStack>
         <VStack justifyContent={'center'} alignItems={['center', 'flex-start']}>
-            <Heading children='David Jacob' size={['md', 'xl']} />
+            <Heading children='Muhasin T' size={['md', 'xl']} />
             <Text children={`Hi, I am a full stack Developer and a teacher.
             Our mission is to provide quality content at reasonable price.`} />
         </VStack>
@@ -36,7 +46,7 @@ const VideoPlayer = () => (
         </video>    </Box>
 );
 
-const TandC = ({termsAndCondition}) => (
+const TandC = ({ termsAndCondition }) => (
     <Box>
         <Heading size={'md'} children='Terms & Condition'
             textAlign={['center', 'left']} my='4' />
@@ -45,14 +55,14 @@ const TandC = ({termsAndCondition}) => (
                 fontFamily={'heading'}
                 letterSpacing={'widest'}
                 textAlign={['center', 'left']}
-                >
+            >
                 {termsAndCondition}
             </Text>
             <Heading
                 my='4'
                 size={'xs'}
-                children='Refund only applicable for cancellation within 7 days' 
-                />
+                children='Refund only applicable for cancellation within 7 days'
+            />
         </Box>
     </Box>
 )
@@ -87,6 +97,6 @@ const About = () => {
             </HStack>
         </Container>
     )
-}
+};
 
 export default About

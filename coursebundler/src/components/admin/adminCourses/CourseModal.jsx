@@ -1,8 +1,23 @@
-import { Box, Button, Grid, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack, Text, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { RiDeleteBin7Fill} from 'react-icons/ri';
+import {
+    Box,
+    Button,
+    Grid,
+    Heading,
+    Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Stack,
+    Text,
+    VStack
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { RiDeleteBin7Fill } from 'react-icons/ri';
 import { fileUploadCss } from '../../auth/Register';
-
 
 const CourseModal = (
     {
@@ -70,7 +85,7 @@ const CourseModal = (
                                         title={item.title}
                                         description={item.description}
                                         num={i + 1}
-                                        lectureId={item.lectureId}
+                                        lectureId={item._id}
                                         courseId={id}
                                         deleteButtonHandler={deleteButtonHandler}
                                         loading={loading}
@@ -143,7 +158,7 @@ const CourseModal = (
             </ModalContent>
         </Modal>
     )
-}
+};
 
 export default CourseModal;
 
@@ -180,5 +195,5 @@ function VideoCard(
             </Button>
         </Stack>
     )
-}
+};
 

@@ -20,4 +20,4 @@ export default store;
 
 // export const server =  'http://localhost:4000/api/v1';
 
-export const server =  'http://52.66.198.6:4000/api/v1';
+export const server =  'http://13.232.97.198:4000/api/v1';

@@ -8,14 +8,14 @@ import cloudinary from "cloudinary";
 export const getAllCourses = catchAsyncError(async (req, res, next) => {
 
     const keyword = req.query.keyword || "";
-    const category = req.query.category || ""; 
+    const category = req.query.category || "";
 
     const courses = await Course.find({
-        title:{
+        title: {
             $regex: keyword,
-            $options:"i",
+            $options: "i",
         },
-        category:{
+        category: {
             $regex: category,
             $options: "i",
         },
@@ -151,6 +151,8 @@ export const deleteCourse = catchAsyncError(async (req, res, next) => {
 export const deleteLecture = catchAsyncError(async (req, res, next) => {
     const { courseId, lectureId } = req.query;
 
+    console.log(lectureId, "id");
+
     const course = await Course.findById(courseId);
     if (!course)
         return next(new ErrorHandler("Course not found", 404));
@@ -186,12 +188,12 @@ Course.watch().on("change", async () => {
         .sort({ createdAt: "desc" })
         .limit(1);
 
-    const courses =await Course.find({});
-       
-   let totalViews =0;
+    const courses = await Course.find({});
 
-    for(let i=0; i<courses.length; i++){
-        totalViews += courses[i].views;  
+    let totalViews = 0;
+
+    for (let i = 0; i < courses.length; i++) {
+        totalViews += courses[i].views;
     }
 
     stats[0].views = totalViews;

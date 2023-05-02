@@ -1,60 +1,60 @@
 import axios from 'axios';
 import { server } from '../store';
 
-export const contactUs = (name,email,message) => async dispatch => {
+export const contactUs = (name, email, message) => async dispatch => {
     try {
         const config = {
             headers: {
-                'Content-type' : 'application/json',
+                'Content-type': 'application/json',
             },
-            withCredentials:true,
+            withCredentials: true,
         };
 
-        dispatch({type:'contactRequest'});
+        dispatch({ type: 'contactRequest' });
 
         const { data } = await axios.post(
-            `${server}/contact`, 
-            {name,email,message},
-             config
-             );
+            `${server}/contact`,
+            { name, email, message },
+            config
+        );
 
         dispatch({
-            type:'contactSuccess',
+            type: 'contactSuccess',
             payload: data.message
         });
     } catch (error) {
         dispatch({
-            type:'contactFail',
-            payload:error.response.data.message,
+            type: 'contactFail',
+            payload: error.response.data.message,
         });
     }
 };
 
-export const courseRequest = (name,email,course) => async dispatch => {
+export const courseRequest = (name, email, course) => async dispatch => {
     try {
         const config = {
             headers: {
-                'Content-type' : 'application/json',
+                'Content-type': 'application/json',
             },
-            withCredentials:true,
+            withCredentials: true,
         };
 
-        dispatch({type:'courseRequestRequest'});
+        dispatch({ type: 'courseRequestRequest' });
 
         const { data } = await axios.post(
-            `${server}/courserequest`, 
-            {name,email,course},
-             config
-             );
+            `${server}/courserequest`,
+            { name, email, course },
+            config
+        );
 
         dispatch({
-            type:'courseRequestSuccess',
+            type: 'courseRequestSuccess',
             payload: data.message
         });
     } catch (error) {
         dispatch({
-            type:'courseRequestFail',
-            payload:error.response.data.message,
+            type: 'courseRequestFail',
+            payload: error.response.data.message,
         });
     }
 };

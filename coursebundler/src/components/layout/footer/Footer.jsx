@@ -1,7 +1,7 @@
-import { Box, Heading, HStack, Stack, VStack } from '@chakra-ui/react'
-import React from 'react'
-import {TiSocialYoutubeCircular,TiSocialInstagramCircular} from 'react-icons/ti'
-import {DiGithub } from 'react-icons/di'
+import { Box, Heading, HStack, Stack, VStack } from '@chakra-ui/react';
+import React from 'react';
+import { TiSocialYoutubeCircular, TiSocialInstagramCircular } from 'react-icons/ti';
+import { DiGithub } from 'react-icons/di';
 
 const Footer = () => {
     return (
@@ -15,22 +15,22 @@ const Footer = () => {
                         children='@CodeTroubleshooter'
                         color={'red.400'} />
                 </VStack>
-                <HStack spacing={['2','10']} justifyContent='center'
-                color={'white'} fontSize='50'
+                <HStack spacing={['2', '10']} justifyContent='center'
+                    color={'white'} fontSize='50'
                 >
-                <a href="https://youtube.com" target={'blank'} rel="noreferrer" >
-                    <TiSocialYoutubeCircular/>
-                </a>
-                <a href="https://instagram.com/muhasin.t" target={'blank'} rel="noreferrer">
-                    <TiSocialInstagramCircular/>
-                </a>
-                <a href="https://github.com/muhasint" target={'blank'} rel="noreferrer">
-                    <DiGithub/>
-                </a>
+                    <a href="https://youtube.com/CodeTroubleshooter" target={'blank'} rel="noreferrer" >
+                        <TiSocialYoutubeCircular />
+                    </a>
+                    <a href="https://instagram.com/muhasin.t" target={'blank'} rel="noreferrer">
+                        <TiSocialInstagramCircular />
+                    </a>
+                    <a href="https://github.com/muhasint" target={'blank'} rel="noreferrer">
+                        <DiGithub />
+                    </a>
                 </HStack>
             </Stack>
         </Box>
     )
-}
+};
 
 export default Footer

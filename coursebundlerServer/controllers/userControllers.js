@@ -14,9 +14,6 @@ export const register = catchAsyncError(async (req, res, next) => {
 
     const { name, email, password } = req.body;
 
-    console.log(password);
-
-
     const file = req.file;
 
 
@@ -103,7 +100,7 @@ export const changePassword = catchAsyncError(async (req, res, next) => {
     const isMatch = await user.comparePassword(oldPassword);
 
     if (!isMatch)
-     return next(new ErrorHandler("Incorrect Old Password", 400));
+        return next(new ErrorHandler("Incorrect Old Password", 400));
 
     user.password = newPassword;
 
@@ -354,7 +351,7 @@ User.watch().on("change", async () => {
     stats[0].users = await User.countDocuments();
     stats[0].subscription = subscription.length;
     stats[0].createdAt = new Date(Date.now());
-  
+
     await stats[0].save();
-  }); 
+});
 

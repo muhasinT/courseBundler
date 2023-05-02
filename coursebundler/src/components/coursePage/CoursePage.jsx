@@ -5,13 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCourseLectures } from '../../redux/actions/course';
 import Loader from '../layout/loader/Loader';
 
-
 const CoursePage = ({ user }) => {
   const [lectureNumber, setLectureNumber] = useState(0);
 
   const { lectures, loading } = useSelector(state => state.course)
-
-
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -81,6 +78,6 @@ const CoursePage = ({ user }) => {
       </Grid>
     );
 
-}
+};
 
 export default CoursePage 

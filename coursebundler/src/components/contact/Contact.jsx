@@ -1,7 +1,16 @@
-import { Box, Button, Container, FormLabel, Heading, Input, Textarea, VStack } from '@chakra-ui/react'
-import React, { useState,useEffect } from 'react';
+import {
+    Box,
+    Button,
+    Container,
+    FormLabel,
+    Heading,
+    Input,
+    Textarea,
+    VStack
+} from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { contactUs } from '../../redux/actions/other';
 import toast from 'react-hot-toast';
 
@@ -17,27 +26,24 @@ const Contact = () => {
         loading,
         error,
         message: stateMessage,
-      } = useSelector(state => state.other);
-    
+    } = useSelector(state => state.other);
 
- 
-      const submitHandler = e => {
+    const submitHandler = e => {
         e.preventDefault();
         dispatch(contactUs(name, email, message));
-      }; 
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         if (error) {
-          toast.error(error);
-          dispatch({ type: 'clearError' });
+            toast.error(error);
+            dispatch({ type: 'clearError' });
         }
-    
+
         if (stateMessage) {
-          toast.success(stateMessage);
-          dispatch({ type: 'clearMessage' });
+            toast.success(stateMessage);
+            dispatch({ type: 'clearMessage' });
         }
-      }, [dispatch, error, stateMessage]);
-    
+    }, [dispatch, error, stateMessage]);
 
     return (
 
@@ -81,11 +87,11 @@ const Contact = () => {
                             focusBorderColor="red.500"
                         />
                     </Box>
-                    <Button 
-                    isLoading={loading}
-                    my="4" 
-                    colorScheme={"red"} 
-                    type="submit"
+                    <Button
+                        isLoading={loading}
+                        my="4"
+                        colorScheme={"red"}
+                        type="submit"
                     >
                         Send Mail
                     </Button>
@@ -102,6 +108,6 @@ const Contact = () => {
             </VStack>
         </Container>
     )
-}
+};
 
 export default Contact

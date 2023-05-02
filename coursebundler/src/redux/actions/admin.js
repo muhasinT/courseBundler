@@ -13,7 +13,6 @@ export const createCourse = (formData) => async dispatch => {
         };
 
         dispatch({ type: 'createCourseRequest' });
-        // title, description, category, createdBy
         const { data } = await axios.post(
             `${server}/createcourse`,
             formData,
@@ -30,7 +29,6 @@ export const createCourse = (formData) => async dispatch => {
             payload: error.response.data.message,
         });
     }
-
 };
 
 export const deleteCourse = id => async dispatch => {
@@ -85,7 +83,7 @@ export const deleteLecture = (courseId, lectureId) => async dispatch => {
 
         const { data } = await axios.delete(
             `${server}/lecture?courseId=${courseId}&lectureId=${lectureId}`,
-             
+
             config);
 
         dispatch({ type: 'deleteLectureSuccess', payload: data.message });
@@ -104,7 +102,7 @@ export const getAllUsers = () => async dispatch => {
         };
         dispatch({ type: 'getAllUsersRequest' });
 
-        const { data } = await axios.get(`${server}/admin/users`,config);
+        const { data } = await axios.get(`${server}/admin/users`, config);
 
         dispatch({ type: 'getAllUsersSuccess', payload: data.users });
     } catch (error) {
@@ -122,7 +120,7 @@ export const updateUserRole = (id) => async dispatch => {
         };
         dispatch({ type: 'updateUserRoleRequest' });
 
-        const { data } = await axios.put(`${server}/admin/user/${id}`, {},config);
+        const { data } = await axios.put(`${server}/admin/user/${id}`, {}, config);
 
         dispatch({ type: 'updateUserRoleSuccess', payload: data.message });
     } catch (error) {
@@ -140,7 +138,7 @@ export const deleteUser = (id) => async dispatch => {
         };
         dispatch({ type: 'deleteUserRequest' });
 
-        const { data } = await axios.delete(`${server}/admin/user/${id}`,config);
+        const { data } = await axios.delete(`${server}/admin/user/${id}`, config);
 
         dispatch({ type: 'deleteUserSuccess', payload: data.message });
     } catch (error) {
@@ -158,7 +156,7 @@ export const getDashboardStats = () => async dispatch => {
         };
         dispatch({ type: 'getAdminStatsRequest' });
 
-        const { data } = await axios.get(`${server}/admin/stats`,config);
+        const { data } = await axios.get(`${server}/admin/stats`, config);
 
         dispatch({ type: 'getAdminStatsSuccess', payload: data });
     } catch (error) {

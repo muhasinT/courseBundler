@@ -1,11 +1,21 @@
-import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, HStack, useDisclosure, VStack } from '@chakra-ui/react'
-import React from 'react'
-import { ColorModeSwitcher } from '../../../ColorModeSwitcher'
-import { RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill } from 'react-icons/ri'
-import './header.scss'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { logout } from '../../../redux/actions/user'
+import {
+    Button,
+    Drawer,
+    DrawerBody,
+    DrawerContent,
+    DrawerHeader,
+    DrawerOverlay,
+    HStack,
+    useDisclosure,
+    VStack
+} from '@chakra-ui/react';
+import React from 'react';
+import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
+import { RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill } from 'react-icons/ri';
+import './header.scss';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../redux/actions/user';
 
 const LinkButton = ({ url = "/", title = "Home", onClose }) =>
 (
@@ -14,7 +24,6 @@ const LinkButton = ({ url = "/", title = "Home", onClose }) =>
     </Link>
 );
 
-
 const Header = ({ isAuthenticated = false, user }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -22,14 +31,12 @@ const Header = ({ isAuthenticated = false, user }) => {
     const dispatch = useDispatch()
 
     const logoutHandler = () => {
-        console.log('logout');
         onClose();
         dispatch(logout());
     }
     return (
         <>
             <ColorModeSwitcher />
-
             <Button
                 onClick={onOpen}
                 className='menu_btn'
@@ -114,7 +121,7 @@ const Header = ({ isAuthenticated = false, user }) => {
             </Drawer>
         </>
     )
-}
+};
 
 export default Header;
 
