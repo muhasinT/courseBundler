@@ -10,8 +10,6 @@ import  toast  from 'react-hot-toast';
 const Users = () => {
     const {users ,loading,error,message} = useSelector(state => state.admin)
 
-    console.log(users,"users");
-
     const dispatch = useDispatch();
 
     const updateHandler = (userId)  => {

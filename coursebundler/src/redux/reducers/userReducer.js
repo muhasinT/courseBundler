@@ -18,6 +18,37 @@ export const userReducer = createReducer(
       state.error = action.payload;
     },
 
+    mobileloginRequest: state => {
+      state.loading = true;
+    },
+
+    mobileloginSuccess: (state, action) => {
+
+      state.loading = false;
+      state.number = action.payload;
+      state.message = action.payload.message;
+    },
+    mobileloginFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+    otpVerificationRequest: state => {
+      state.loading = true;
+    },
+    otpVerificationSuccess: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.user = action.payload.user;
+      state.message = action.payload.message;
+    },
+    otpVerificationFail: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.error = action.payload;
+    },
+
+
     registerRequest: state => {
       state.loading = true;
     },

@@ -4,7 +4,7 @@ import { Stats } from "../models/Stats.js";
 import getDataUri from "../utils/dataUri.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import cloudinary from "cloudinary";
-  
+
 export const getAllCourses = catchAsyncError(async (req, res, next) => {
 
     const keyword = req.query.keyword || "";
@@ -121,7 +121,6 @@ export const addLecture = catchAsyncError(async (req, res, next) => {
 export const deleteCourse = catchAsyncError(async (req, res, next) => {
     const { id } = req.params;
     const course = await Course.findById(id);
-    console.log(course);
 
     if (!course)
         return next(new ErrorHandler("Course not found", 404));
@@ -135,7 +134,6 @@ export const deleteCourse = catchAsyncError(async (req, res, next) => {
         await cloudinary.v2.uploader.destroy(singleLecture.video.public_id, {
             resource_type: "video"
         });
-        console.log(singleLecture.video.public_id);
 
 
     };
@@ -150,8 +148,6 @@ export const deleteCourse = catchAsyncError(async (req, res, next) => {
 
 export const deleteLecture = catchAsyncError(async (req, res, next) => {
     const { courseId, lectureId } = req.query;
-
-    console.log(lectureId, "id");
 
     const course = await Course.findById(courseId);
     if (!course)

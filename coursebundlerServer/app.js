@@ -52,15 +52,6 @@ app.use("/api/v1", user);
 app.use("/api/v1", payment);
 app.use("/api/v1/", other)
 
-// app.get("/*", (req, res) => {
-//     res.sendFile(path.join(`${buildPath}/index.html`),
-//         function (err) {
-//             if (err) {
-//                 res.status(500).send(err)
-//             }
-//         }
-//     )
-// });
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, '../coursebundler/build/index.html'), 
@@ -72,7 +63,6 @@ app.get('/*', function(req, res) {
   });
 
 export default app;
-
 
 app.use(ErrorMiddleware);
  

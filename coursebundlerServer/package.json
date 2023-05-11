@@ -6,7 +6,6 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js"
-  
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +25,7 @@
     "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "razorpay": "^2.8.6",
+    "twilio": "^4.11.0",
     "validator": "^13.9.0"
   }
 }

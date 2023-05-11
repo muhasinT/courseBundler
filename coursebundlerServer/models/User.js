@@ -21,6 +21,12 @@ const schema = new mongoose.Schema({
         minLength: [6, "Password must be at least 6 characters"],
         select: false,
     },
+    number: {
+        type: String,
+        required: [true, "Please enter your valid mobile number"],
+        unique: true,
+        maxLength: [10, "Must be 10 numbers"]
+    },
     role: {
         type: String,
         enum: ["admin", "user"],
@@ -43,7 +49,7 @@ const schema = new mongoose.Schema({
     playlist: [
         {
             course: {
-                type: mongoose.Schema. 
+                type: mongoose.Schema.
                     Types.ObjectId,
                 ref: "Course",
             },

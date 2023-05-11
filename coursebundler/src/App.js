@@ -28,6 +28,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { loadUser } from './redux/actions/user';
 import { ProtectedRoute } from 'protected-route-react';
 import Loader from './components/layout/loader/Loader';
+import MobileLogin from './components/mobile/MobileLogin';
+import  OtpVerification  from './components/mobile/OtpVerification';
 
 function App() {
 
@@ -113,6 +115,26 @@ function App() {
                     </ProtectedRoute>
 
                   } />
+
+                <Route path="/mobilelogin"
+                  element={
+                      <MobileLogin />
+                  }
+
+                />
+
+                <Route path="/mobilelogin/verify"
+                  element={
+                    <ProtectedRoute
+                      isAuthenticated={!isAuthenticated}
+                      redirect="/profile"
+                    >
+                      <OtpVerification />
+                    </ProtectedRoute>
+                  }
+                  
+                />
+
                 <Route path="/register" element={
                   <ProtectedRoute
                     isAuthenticated={!isAuthenticated}

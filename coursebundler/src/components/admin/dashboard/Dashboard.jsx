@@ -43,7 +43,6 @@ const Bar = ({ title, value, profit }) => (
     </Box>
 )
 
-
 const Dashboard = () => {
 
     const dispatch = useDispatch();

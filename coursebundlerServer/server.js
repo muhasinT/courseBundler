@@ -28,6 +28,7 @@ nodeCron.schedule("0 0 0 1 * *", async () => {
 
 });
 
+
 app.listen(process.env.PORT, () => {
     console.log(`server is working on port http://localhost:${process.env.PORT}`);
 });

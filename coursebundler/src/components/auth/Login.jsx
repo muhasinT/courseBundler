@@ -68,6 +68,16 @@ const Login = () => {
                     </Button>
 
                     <Box my="4">
+                        Login with Mobile Number?{' '}
+                        <Link to="/mobilelogin">
+                            <Button colorScheme={'red'} variant="link">
+                                Click
+                            </Button>{" "}
+                            here
+                        </Link>
+                    </Box>
+
+                    <Box my="4">
                         New USer?{' '}
                         <Link to="/register">
                             <Button colorScheme={'red'} variant="link">

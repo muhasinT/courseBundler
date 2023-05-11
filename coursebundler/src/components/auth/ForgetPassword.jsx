@@ -16,6 +16,7 @@ const ForgetPassword = () => {
     const { loading, message, error } = useSelector(state => state.profile)
 
     const dispatch = useDispatch();
+    
     const submitHandler = e => {
         e.preventDefault();
         dispatch(forgetPassword(email));

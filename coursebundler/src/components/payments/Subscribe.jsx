@@ -49,7 +49,7 @@ const Subscribe = ({ user }) => {
             contact: '',
           },
           notes: {
-            address: '6 pack programmer at youtube',
+            address: 'CodeTroubleshooter at youtube',
           },
           theme: {
             color: '#FFC800',

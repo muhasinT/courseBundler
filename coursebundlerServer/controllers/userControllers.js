@@ -8,16 +8,17 @@ import { Course } from "../models/Course.js"
 import getDataUri from "../utils/dataUri.js";
 import cloudinary from "cloudinary";
 import { Stats } from "../models/Stats.js";
+import twilio from "twilio";
 
 
 export const register = catchAsyncError(async (req, res, next) => {
 
-    const { name, email, password } = req.body;
+    const { name, email, number, password } = req.body;
 
     const file = req.file;
 
 
-    if (!name || !email || !password || !file)
+    if (!name || !email || !number || !password || !file)
         return next(new ErrorHandler("Please Enter All Field", 400));
 
     let user = await User.findOne({ email });
@@ -33,6 +34,7 @@ export const register = catchAsyncError(async (req, res, next) => {
     user = await User.create({
         name,
         email,
+        number,
         password,
         avatar: {
             public_id: mycloud.public_id,
@@ -63,6 +65,94 @@ export const login = catchAsyncError(async (req, res, next) => {
 
     sendToken(res, user, `Welcome back ,${user.name}`, 200);
 });
+
+export const mobilelogin = catchAsyncError(async (req, res, next) => {
+
+
+    const { number } = req.body;
+
+    if (!number)
+        return next(new ErrorHandler("Please Enter All Field", 400));
+
+    const user = await User.findOne({ number });
+
+    if (!user)
+        return next(new ErrorHandler("User not found", 400))
+
+
+    // TWILIO OTP STARTS
+
+    const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
+    await client.verify.v2.services(process.env.TWILIO_SERVICE_SID)
+        .verifications.create({
+            to: `+91${number}`,
+            channel: "sms",
+
+        })
+
+        .then(response => {
+
+            res.status(200).json({
+                success: true,
+                message: "OTP send to Your Registered Mobile Number",
+                number,
+
+            })
+        }
+
+        ).catch(e => {
+            res.status(200).json({
+                success: false,
+                message: e.message
+            })
+
+        })
+
+    // TWILIO OTP END
+
+
+});
+
+export const OtpVerification = catchAsyncError(async (req, res, next) => {
+
+    const { otp, number } = req.body;
+
+    if (!otp)
+        return next(new ErrorHandler("Please Enter All Field", 400));
+
+    const user = await User.findOne({ number });
+
+    const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
+    await client.verify.v2.services(process.env.TWILIO_SERVICE_SID)
+        .verificationChecks.create({
+            to: `+91${number}`,
+            code: otp,
+        })
+
+        .then(response => {
+
+            if (response.valid == false) {
+                res.status(400).json({
+                    success: false,
+                    message: 'OTP is Invalid'
+                })
+            };
+            sendToken(res, user, `Welcome back ,${user.name}`, 200);
+        })
+
+
+        .catch(err => {
+            res.status(200).json({
+                success: false,
+                message: 'Error '
+            })
+        })
+
+
+});
+
 
 export const logout = catchAsyncError(async (req, res, next) => {
     res
@@ -162,7 +252,6 @@ export const forgetPassword = catchAsyncError(async (req, res, next) => {
     const user = await User.findOne({ email });
 
 
-
     if (!user) return next(new ErrorHandler("User not found", 400));
 
     const resetToken = await user.getResetToken();
@@ -183,6 +272,7 @@ export const forgetPassword = catchAsyncError(async (req, res, next) => {
         messgage: `Reset Token has been sent to ${user.email}`,
     });
 });
+
 
 export const resetPassword = catchAsyncError(async (req, res, next) => {
 

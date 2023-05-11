@@ -3,12 +3,11 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changePassword } from '../../redux/actions/profile';
 import { useEffect } from 'react';
-import { toast } from 'react-hot-toast';
+import  toast  from 'react-hot-toast';
 
 const ChangePassword = () => {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
-
     const dispatch = useDispatch();
     const submitHandler = e => {
         e.preventDefault();

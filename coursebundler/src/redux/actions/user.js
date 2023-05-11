@@ -5,6 +5,8 @@ export const login = (email, password) => async dispatch => {
   try {
     dispatch({ type: 'loginRequest' });
 
+
+
     const { data } = await axios.post(
       `${server}/login`,
       { email, password },
@@ -17,11 +19,60 @@ export const login = (email, password) => async dispatch => {
       }
     );
 
+
     dispatch({ type: 'loginSuccess', payload: data });
   } catch (error) {
     dispatch({ type: 'loginFail', payload: error.response.data.message });
   }
 };
+
+export const mobilelogin = (number) => async dispatch => {
+  try {
+    dispatch({ type: 'mobileloginRequest' });
+
+    const { data } = await axios.post(
+      `${server}/mobilelogin`,
+      { number },
+      {
+        headers: {
+          'Content-type': 'application/json',
+        },
+
+        withCredentials: true,
+      }
+    );
+
+
+    dispatch({ type: 'mobileloginSuccess', payload: data.number });
+
+
+  } catch (error) {
+    dispatch({ type: 'mobileloginFail', payload: error.response.data.message });
+  }
+};
+
+export const otpverification = (otp, number) => async dispatch => {
+  try {
+    dispatch({ type: 'otpVerificationRequest' });
+
+    const { data } = await axios.post(
+      `${server}/mobilelogin/verify`,
+      { otp, number },
+      {
+        headers: {
+          'Content-type': 'application/json',
+        },
+
+        withCredentials: true,
+      }
+    );
+
+    dispatch({ type: 'otpVerificationSuccess', payload: data });
+  } catch (error) {
+    dispatch({ type: 'otpVerificationFail', payload: error.response.data.message });
+  }
+};
+
 
 export const register = formdata => async dispatch => {
   try {
@@ -79,8 +130,6 @@ export const buySubscription = () => async dispatch => {
 
       withCredentials: true,
     });
-    console.log(data, "dsfnj")
-
 
     dispatch({ type: 'buySubscriptionSuccess', payload: data.subscriptionId });
   } catch (error) {

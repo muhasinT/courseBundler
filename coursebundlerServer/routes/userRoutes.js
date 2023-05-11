@@ -1,5 +1,6 @@
 import express from "express";
 import {
+    OtpVerification,
     addToPlaylist,
     changePassword,
     deleteMyProfile,
@@ -9,6 +10,7 @@ import {
     getMyProfile,
     login,
     logout,
+    mobilelogin,
     register,
     removeFromPlaylsit,
     resetPassword,
@@ -27,6 +29,12 @@ router.route("/register")
 //Login
 router.route("/login")
     .post(login);
+//Mobile Login
+router.route("/mobilelogin")
+    .post(mobilelogin);
+//Success Mobile Login
+router.route("/mobilelogin/verify")
+    .post(OtpVerification)
 
 //Logout
 router.route("/logout")
