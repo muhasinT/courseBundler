@@ -38,7 +38,7 @@ const Subscribe = ({ user }) => {
       const openPopUp = () => {
         const options = {
           key,
-          name: 'CourseBundler',
+          name: 'CourseStack',
           description: 'Get access to all premium content',
           image: logo,
           subscription_id: subscriptionId,

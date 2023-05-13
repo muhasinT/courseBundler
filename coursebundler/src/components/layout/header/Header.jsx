@@ -57,7 +57,7 @@ const Header = ({ isAuthenticated = false, user }) => {
             >
                 <DrawerOverlay backdropFilter={'blur(3px)'} />
                 <DrawerContent>
-                    <DrawerHeader borderBottomWidth={"1px"}>COURSE BUNDLER</DrawerHeader>
+                    <DrawerHeader borderBottomWidth={"1px"}>COURSE STACK</DrawerHeader>
                     <DrawerBody>
                         <VStack spacing={'4'} alignItems={'flex-start'}>
                             <LinkButton onClose={onClose} url="/" title="Home" />

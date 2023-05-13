@@ -265,7 +265,7 @@ export const forgetPassword = catchAsyncError(async (req, res, next) => {
 
     //send token via 
 
-    await sendEmail(user.email, "CourseBundler Reset Password", mesage)
+    await sendEmail(user.email, "CourseStack Reset Password", mesage)
 
     res.status(200).json({
         success: true,

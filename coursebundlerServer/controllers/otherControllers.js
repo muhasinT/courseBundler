@@ -11,7 +11,7 @@ export const contact = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler("All Fields are mandatory", 400));
 
     const to = process.env.MY_MAIL;
-    const subject = "Contact from CourseBundler";
+    const subject = "Contact from CourseStack";
     const text = `I am ${name} and my Email is ${email}. \n
      ${message}`;
 
@@ -33,7 +33,7 @@ export const courseRequest = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler(" All Fields are mandatory", 400));
 
     const to = process.env.MY_MAIL;
-    const subject = "Requesting for a course on CourseBundler";
+    const subject = "Requesting for a course on CourseStack";
     const text = `I am ${name} and my Email is ${email}. \n
     ${course}`;
 
