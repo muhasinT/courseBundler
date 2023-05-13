@@ -26,7 +26,7 @@ const schema = new mongoose.Schema({
         required: [true, "Please enter your valid mobile number"],
         unique: true,
         minLength:[10,"Required 10 numbers"],
-        maxLength: [10, " 10 numbers"]
+        maxLength: [10, " Can't exceeded 10 numbers"]
     },
     role: {
         type: String,
